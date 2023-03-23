@@ -27,7 +27,7 @@ class _AutoScrollContainerState extends State<AutoScrollContainer> {
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: Colors.green,
+        color: Colors.lightGreenAccent,
       ),
       child: Padding(
         padding: const EdgeInsets.all(10.0),

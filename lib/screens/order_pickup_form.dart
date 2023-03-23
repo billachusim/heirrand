@@ -323,7 +323,7 @@ class _OrderPickUpFormState extends State<OrderPickUpForm> {
                     GestureDetector(
                       onTap: () async {
                         await sendOrderToFirestore();
-                        onContinueToWhatsAppClicked();
+                        //onContinueToWhatsAppClicked();
                         Get.offNamed('/order');
                       },
                       child: Container(
@@ -332,18 +332,29 @@ class _OrderPickUpFormState extends State<OrderPickUpForm> {
                           padding: const EdgeInsets.all(20.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                             children: [
-                              Image.asset("assets/images/heirrandWhiteLogo.jpeg",
-                                height: 25, width: 25,),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 75.0),
-                                child: Text("CONTINUE VIA WHATSAPP",
-                                    //textAlign: TextAlign.center,
-                                    style: GoogleFonts.lato(
-                                        fontSize: 16.0,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w700)),
+                              const Icon(Icons.add_card, color:Colors.white, size:30),
+                              Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 75.0),
+                                    child: Text("Pay Now",
+                                        //textAlign: TextAlign.center,
+                                        style: GoogleFonts.lato(
+                                            fontSize: 22.0,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w700)),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 75.0),
+                                    child: Text("Secure checkout by Paystack.",
+                                        //textAlign: TextAlign.center,
+                                        style: GoogleFonts.lato(
+                                            fontSize: 12.0,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w700)),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
@@ -355,7 +366,7 @@ class _OrderPickUpFormState extends State<OrderPickUpForm> {
                     GestureDetector(
                       onTap: () async {
                         await sendOrderToFirestore();
-                        launchEmailApp();
+                        onContinueToWhatsAppClicked();
                         Get.offNamed('/order');
                       },
                       child: Container(
@@ -366,13 +377,13 @@ class _OrderPickUpFormState extends State<OrderPickUpForm> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                             children: [
-                              const Icon(Icons.email, color:Colors.white, size:30),
+                              const Icon(Icons.payments_rounded, color:Colors.white, size:30),
                               Padding(
                                 padding: const EdgeInsets.only(right: 75.0),
-                                child: Text("CONTINUE VIA EMAIL",
+                                child: Text("Pay On Delivery",
                                     //textAlign: TextAlign.center,
                                     style: GoogleFonts.lato(
-                                        fontSize: 16.0,
+                                        fontSize: 22.0,
                                         color: Colors.white,
                                         fontWeight: FontWeight.w700)),
                               ),

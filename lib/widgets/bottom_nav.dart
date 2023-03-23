@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:heirrand/orders/orders_screen.dart';
 import '../screens/home_screen.dart';
+import '../screens/wallet/wallet_screen.dart';
 import '../services/helper.dart';
 
 
@@ -37,8 +38,7 @@ class _BottomNavbarState extends State<BottomNavBar> {
   final screens = [
     const Homepage(),
     OrderScreen(title: "Orders"),
-    //ImageScreen(),
-    //WalletScreen(transactions: [],),
+    WalletScreen(transactions: const [],),
     //const ProfileScreen(),
   ];
 
@@ -52,20 +52,20 @@ class _BottomNavbarState extends State<BottomNavBar> {
 
   final List<BottomNavigationBarItem> items = [
     const BottomNavigationBarItem(
-      icon: Icon(Icons.home_outlined, color: Colors.greenAccent,),
-      activeIcon: Icon(Icons.home_filled, color: Colors.green,),
+      icon: Icon(Icons.home_outlined, color: Colors.yellowAccent,),
+      activeIcon: Icon(Icons.home_filled, color: Colors.yellow,),
       label: 'Home',
     ),
     const BottomNavigationBarItem(
-      icon: Icon(Icons.motorcycle_outlined, color: Colors.greenAccent,),
-      activeIcon: Icon(Icons.motorcycle_rounded, color: Colors.green,),
+      icon: Icon(Icons.motorcycle_outlined, color: Colors.yellowAccent,),
+      activeIcon: Icon(Icons.motorcycle_rounded, color: Colors.yellow,),
       label: 'Orders',
     ),
-    //const BottomNavigationBarItem(
-      //icon: Icon(Icons.notifications_none),
-      //activeIcon: Icon(Icons.notifications_none),
-      //label: 'Wallet',
-    //),
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.wallet_outlined, color: Colors.yellowAccent),
+      activeIcon: Icon(Icons.wallet_rounded, color: Colors.yellow,),
+      label: 'Wallet',
+    ),
     //const BottomNavigationBarItem(
       //icon: Icon(Icons.notifications_none),
       //activeIcon: Icon(Icons.notifications_none),
@@ -89,6 +89,7 @@ class _BottomNavbarState extends State<BottomNavBar> {
     return Scaffold(
       body: screens[_select],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.green,
         items: items,
         onTap: ((value) => setState(() => _select = value)),
         currentIndex: _select,
@@ -101,8 +102,8 @@ class _BottomNavbarState extends State<BottomNavBar> {
           fontWeight: FontWeight.normal,
           fontSize: 10,
         ),
-        selectedItemColor: const Color(0xFFFFC402),
-        unselectedItemColor: const Color(0xFF9E9E9E),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
       ),
     );
   }
