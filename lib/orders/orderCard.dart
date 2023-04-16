@@ -76,6 +76,11 @@ class OrderCard extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                   fontSize: 13.0,
                 ),),
+              Text('is Featured? ${order.isFeatured}',
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 13.0,
+                ),),
               Text('Total For Order: ${order.totalForOrder}',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,

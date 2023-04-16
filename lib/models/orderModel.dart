@@ -14,11 +14,14 @@ class OrderModel {
   String? totalForOrder;
   String? anyMoreInfo;
   String? vehicleType;
+  bool isFeatured;
+
 
   OrderModel({
     this.orderNumber,
     this.userId,
     this.customerName,
+    required this.isFeatured,
     this.customerPhone,
     this.itemsDescription,
     this.deliveryAddress,
@@ -46,6 +49,7 @@ class OrderModel {
       statusOfOrder: map['statusOfOrder'] ?? '',
       totalForOrder: map['totalForOrder'] ?? '',
       vehicleType: map['vehicleType'] ?? '',
+      isFeatured: map['isFeatured'] ?? false,
     );
   }
 
@@ -63,6 +67,7 @@ class OrderModel {
       dateOfOrder: json['dateOfOrder'],
       statusOfOrder: json['statusOfOrder'] ?? '',
       totalForOrder: json['totalForOrder'] ?? '',
+      isFeatured: json['isFeatured'] ?? false,
     );
   }
 

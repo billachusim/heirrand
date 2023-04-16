@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:heirrand/orders/orderCard.dart';
 
 import '../models/orderModel.dart';
 import '../services/helper.dart';
@@ -101,6 +100,12 @@ class OrderDetailsPage extends StatelessWidget {
                           ),),
                         SizedBox(height: 16,),
                         Text('Vehicle Type: ${order.vehicleType}',
+                          style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 16.0,
+                          ),),
+                        SizedBox(height: 16,),
+                        Text('Is Featured? ${order.isFeatured}',
                           style: TextStyle(
                             fontWeight: FontWeight.normal,
                             fontSize: 16.0,

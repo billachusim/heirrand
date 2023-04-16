@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../models/userModel.dart';
 import 'helper.dart';
 
 
@@ -12,12 +13,14 @@ Logger logger = Logger();
 SharedPreferences? prefs;
 
 class FirebaseServices extends ChangeNotifier {
-
+  /// create instance of Firestore
+  FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
   User? currentUser = FirebaseAuth.instance.currentUser;
   final String usersKey = 'user';
   final String alterEgoKey = 'alterEgo';
   final String alterEgoAccessCodeKey = 'alterEgoAccessCodeKey';
+  String? _usersID;
 
 
   /// SignUp user
@@ -134,6 +137,20 @@ class FirebaseServices extends ChangeNotifier {
   Future<String> getUsersId() async {
     prefs = await SharedPreferences.getInstance();
     return prefs!.getString(usersKey) ?? '';
+  }
+
+
+  /// Get user info
+
+  Future<UserModel> getUserInfo() async {
+    _usersID = await getUsersId();
+    DocumentSnapshot response = await _firebaseFirestore
+        .collection("users")
+        .doc(_usersID)
+        .get();
+
+    var user = UserModel.fromJson(response.data() as Map<String, dynamic>);
+    return user;
   }
 
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../models/orderModel.dart';
-import '../orders/OrderDetailsPage.dart';
 import '../services/helper.dart';
 
 class DeliveryCard extends StatelessWidget {

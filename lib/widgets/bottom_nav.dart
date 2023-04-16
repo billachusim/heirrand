@@ -42,13 +42,6 @@ class _BottomNavbarState extends State<BottomNavBar> {
     //const ProfileScreen(),
   ];
 
-  static Image generateIcon(String path) {
-    return Image.asset(
-      '${ImageLoader.rootPaht}/buttomnav/$path',
-      width: 24,
-      height: 24,
-    );
-  }
 
   final List<BottomNavigationBarItem> items = [
     const BottomNavigationBarItem(

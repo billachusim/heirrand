@@ -1,10 +1,12 @@
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:heirrand/models/orderModel.dart';
-import 'package:heirrand/orders/orderCard.dart';
+import 'package:heirrand/orders/AllOrders.dart';
 import 'package:heirrand/screens/order_pickup_form.dart';
+import '../services/firebaseServices.dart';
 import '../services/helper.dart';
 import '../widgets/auto_scroll_container.dart';
 import '../widgets/delivery_activity_widget.dart';
@@ -22,12 +24,14 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final FirebaseServices firebaseServices = FirebaseServices();
   var currentUser = FirebaseAuth.instance.currentUser;
 
 
   @override
   void initState() {
     super.initState();
+    AppTrackingTransparency.requestTrackingAuthorization();
   }
 
 
@@ -41,7 +45,9 @@ class _HomepageState extends State<Homepage> {
   Stream<List<OrderModel>> getOrders(String userId) {
     return FirebaseFirestore.instance
         .collection('orders')
+        .where("isFeatured", isEqualTo: true)
         .orderBy('dateOfOrder', descending: true)
+        .limit(50)
         .snapshots()
         .map((querySnapshot) => querySnapshot.docs
         .map((doc) => OrderModel.fromJson(doc.data()))
@@ -63,8 +69,17 @@ class _HomepageState extends State<Homepage> {
           resizeToAvoidBottomInset: true,
           appBar: AppBar(
             elevation: 2,
-            leading: Padding(
-              padding: const EdgeInsets.all(8.0),
+            leading: GestureDetector(
+                onDoubleTap: () async {
+                  final user = await firebaseServices.getUserInfo();
+                  if (user.userType == 'ADMIN') {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AllOrderScreen()),
+                    );
+                  }
+                },
               child: Image.asset("assets/images/heirrandWhiteLogo.jpeg"),
             ),
             title: const Text("Heirrand"),

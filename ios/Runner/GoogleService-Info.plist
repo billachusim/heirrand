@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>828682374499-10cd1jefphebkp5pjdj1nmvfktkb7vra.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.828682374499-10cd1jefphebkp5pjdj1nmvfktkb7vra</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCpftQxoATs9TzCP1Fa39YjYI4kaqrKyTY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>828682374499</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.nnewitech.heirrand</string>
+	<key>PROJECT_ID</key>
+	<string>heirrand-4a31a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>heirrand-4a31a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:828682374499:ios:6faf5d5e6a2771120cd756</string>
+</dict>
+</plist>

@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -102,6 +101,7 @@ class _OrderPickUpFormState extends State<OrderPickUpForm> {
                                   if (value!.isEmpty) {
                                     return "Enter Your Name";
                                   }
+                                  return null;
                                 },
                                 textInputAction: TextInputAction.next,
                                 controller: _customerName,
@@ -403,13 +403,14 @@ class _OrderPickUpFormState extends State<OrderPickUpForm> {
   }
 
 
-  String? getWhatsAppUrl(String payload ){
+  String getWhatsAppUrl(String payload ){
     return "https://api.whatsapp.com/send?phone=2348068597140&text=" + (payload);
   }
 
   onContinueToWhatsAppClicked() {
-    var whatsAppUrl = getWhatsAppUrl(getPayload() ?? "");
-    launch(whatsAppUrl!);
+    final String payload = getPayload().toString();
+    Uri whatsAppUrl = Uri.parse(getWhatsAppUrl(payload));
+    launchUrl(whatsAppUrl);
 
   }
 
@@ -506,6 +507,7 @@ class _OrderPickUpFormState extends State<OrderPickUpForm> {
         'statusOfOrder': 'pending',
         'vehicleType': 'Heirrand Super Bike',
         'totalForOrder': 'pending',
+        'isFeatured': false,
       });
     } catch (error) {
       if (kDebugMode) {
